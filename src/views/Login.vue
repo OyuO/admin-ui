@@ -21,11 +21,17 @@ export default {
       <el-form-item>
         <el-input type="password" v-model="password" placeholder="password" prefix-icon="el-icon-lock"></el-input>
       </el-form-item>
-      <el-form-item id="valid_code_form">
-        <el-input class="test" v-model="code" placeholder="验证码" prefix-icon="el-icon-circle-check"></el-input>
-        <img src="@/assets/images/validcode.gif"/>
+      <el-form-item>
+        <el-input class="valid_code_form_input" v-model="code" placeholder="验证码"
+                  prefix-icon="el-icon-circle-check"></el-input>
+        <img class="valid_code_img" src="@/assets/images/validcode.gif"/>
       </el-form-item>
-      <el-button type="primary" icon="el-icon-search">登录</el-button>
+      <el-checkbox style="margin:0px 0px 20px 0px;">记住密码</el-checkbox>
+      <el-form-item>
+        <el-button style="width: 100%" type="primary" icon="el-icon-search">
+          登录
+        </el-button>
+      </el-form-item>
     </el-form>
   </div>
 </template>
@@ -42,10 +48,11 @@ export default {
 .el-form {
   background-color: white;
   width: 400px;
-  padding: 20px;
+  padding: 25px 25px 5px 25px;
   border-radius: 6px;
 
   .title {
+    color: #707070;
     margin: 0px auto 30px auto;
     text-align: center;
   }
@@ -55,13 +62,15 @@ export default {
   }
 }
 
-#valid_code_form {
-  display: flex;
-  align-items: center;
+.valid_code_form_input {
+  width: 67%;
 }
 
-.test {
-  width: 49.9%;
+.valid_code_img {
+  width: 25%;
+  height: 40px;
+  vertical-align: middle;
+  float: right;
 }
 
 </style>
