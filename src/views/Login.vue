@@ -26,13 +26,17 @@ export default {
                   prefix-icon="el-icon-circle-check"></el-input>
         <img class="valid_code_img" src="@/assets/images/validcode.gif"/>
       </el-form-item>
-      <el-checkbox style="margin:0px 0px 20px 0px;">记住密码</el-checkbox>
+      <el-checkbox style="margin:0px 0px 22px 0px;">记住密码</el-checkbox>
       <el-form-item>
-        <el-button style="width: 100%" type="primary" icon="el-icon-search">
+        <el-button style="width: 100%" type="primary">
           登录
         </el-button>
       </el-form-item>
     </el-form>
+    <!--  底部  -->
+    <div class="el-login-footer">
+      <span>Copyright © 2018-2024 ruoyi.vip All Rights Reserved.</span>
+    </div>
   </div>
 </template>
 
@@ -46,6 +50,7 @@ export default {
 }
 
 .el-form {
+  box-sizing: border-box;
   background-color: white;
   width: 400px;
   padding: 25px 25px 5px 25px;
@@ -55,10 +60,6 @@ export default {
     color: #707070;
     margin: 0px auto 30px auto;
     text-align: center;
-  }
-
-  .el-input {
-    margin-bottom: 10px;
   }
 }
 
@@ -71,6 +72,16 @@ export default {
   height: 40px;
   vertical-align: middle;
   float: right;
+}
+
+.el-login-footer {
+  position: fixed;
+  bottom: 0;
+  color: #fff;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-align: center;
+  line-height: 40px;
 }
 
 </style>
