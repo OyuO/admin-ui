@@ -1,4 +1,6 @@
 <script>
+import loginApi from "@/api/login";
+
 export default {
   name: "Login",
   data() {
@@ -7,6 +9,13 @@ export default {
       password: '',
       code: ''
     }
+  },
+  methods: {
+    async getValidCodeImg() {
+      const {data: res} = await loginApi.getValidCodeImg();
+      console.log(res)
+    }
+
   }
 }
 </script>
@@ -24,7 +33,7 @@ export default {
       <el-form-item>
         <el-input class="valid_code_form_input" v-model="code" placeholder="验证码"
                   prefix-icon="el-icon-circle-check"></el-input>
-        <img class="valid_code_img" src="@/assets/images/validcode.gif"/>
+        <img class="valid_code_img" src="@/assets/images/validcode.gif" @click="getValidCodeImg"/>
       </el-form-item>
       <el-checkbox style="margin:0px 0px 22px 0px;">记住密码</el-checkbox>
       <el-form-item>
