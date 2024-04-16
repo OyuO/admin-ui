@@ -1,5 +1,6 @@
 <script>
 import loginApi from "@/api/login";
+import validcode from "@/assets/images/validcode.gif"
 
 export default {
   name: "Login",
@@ -7,15 +8,21 @@ export default {
     return {
       username: '',
       password: '',
-      code: ''
+      code: '',
+      validCodeImgUrl: validcode
     }
   },
   methods: {
-    async getValidCodeImg() {
-      const {data: res} = await loginApi.getValidCodeImg();
-      console.log(res)
+    refreshValidCodeImg() {
+      loginApi.getValidCodeImg().then(res => {
+        const data = res.data
+        console.log(data)
+        this.validCodeImgUrl = 'data:image/gif;base64,' + data.img
+      })
     }
-
+  },
+  created() {
+    this.refreshValidCodeImg()
   }
 }
 </script>
@@ -33,7 +40,7 @@ export default {
       <el-form-item>
         <el-input class="valid_code_form_input" v-model="code" placeholder="验证码"
                   prefix-icon="el-icon-circle-check"></el-input>
-        <img class="valid_code_img" src="@/assets/images/validcode.gif" @click="getValidCodeImg"/>
+        <img class="valid_code_img" :src="validCodeImgUrl" @click="refreshValidCodeImg"/>
       </el-form-item>
       <el-checkbox style="margin:0px 0px 22px 0px;">记住密码</el-checkbox>
       <el-form-item>
