@@ -1,6 +1,8 @@
 <script>
+import Cookies from "js-cookie";
 import loginApi from "@/api/login";
 import validcode from "@/assets/images/validcode.gif"
+import {decrypt, encrypt} from "@/common/jsencrypt";
 
 export default {
   name: "Login",
@@ -14,6 +16,7 @@ export default {
         rememberMe: false
       },
       validCodeImgUrl: validcode,
+      loading: false,
       rules: {
         username: [
           {required: true, message: '请输入您的账号', trigger: 'blur'}
@@ -39,20 +42,41 @@ export default {
     submitLoginForm() {
       this.$refs['loginForm'].validate(valid => {
         if (valid) {
-          loginApi.login(this.loginForm).then(res => {
-            const data = res.data
-            if (data.code !== 200) {
-              return this.$message.error(data.msg)
-            }
+          this.loading = true
+          if (this.loginForm.rememberMe) {
+            Cookies.set("username", this.loginForm.username, {expires: 30})
+            Cookies.set("password", encrypt(this.loginForm.password), {expires: 30})
+            Cookies.set("rememberMe", this.loginForm.rememberMe, {expires: 30})
+          } else {
+            Cookies.remove("username")
+            Cookies.remove("password")
+            Cookies.remove("rememberMe")
+          }
+
+          this.$store.dispatch("Login", this.loginForm).then(() => {
+            this.$router.push({path: "index"})
+          }).catch(msg => {
+            this.loading = false
+            this.$message.error(msg)
+            this.refreshValidCodeImg()
           })
-        } else {
-          return false
         }
       })
+    },
+    getCookie() {
+      const username = Cookies.get("username")
+      const password = Cookies.get("password")
+      const rememberMe = Cookies.get("rememberMe")
+      this.loginForm = {
+        username: username === undefined ? this.loginForm.username : username,
+        password: password === undefined ? this.loginForm.password : decrypt(password),
+        rememberMe: rememberMe === undefined ? this.loginForm.rememberMe : Boolean(rememberMe)
+      }
     }
   },
   created() {
     this.refreshValidCodeImg()
+    this.getCookie()
   }
 }
 </script>
@@ -75,8 +99,9 @@ export default {
       </el-form-item>
       <el-checkbox style="margin:0px 0px 22px 0px;" v-model="loginForm.rememberMe">记住密码</el-checkbox>
       <el-form-item>
-        <el-button style="width: 100%" type="primary" @click="submitLoginForm">
-          登录
+        <el-button style="width: 100%" type="primary" @click.native.prevent="submitLoginForm">
+          <span v-if="!loading">登录</span>
+          <span v-else>登录中...</span>
         </el-button>
       </el-form-item>
     </el-form>
