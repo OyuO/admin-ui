@@ -1,10 +1,10 @@
-import {axiosInstance as http} from "@/common/request";
+import {http as http} from "@/common/request"
 
-export default {
+export const loginApi = {
     getValidCodeImg() {
-        return http.get('/captchaImage')
+        return http.get("/captchaImage")
     },
     login(userInfo) {
-        return http.post('/login', userInfo)
+        return http.post("/login", userInfo)
     }
 }

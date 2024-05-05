@@ -1,12 +1,12 @@
-import loginApi from "@/api/login";
-import {setToken} from "@/common/auth";
+import {loginApi} from "@/api/login"
+import {setToken} from "@/common/auth"
 
 const user = {
     state: {
-        token: '',
-        id: '',
-        name: '',
-        avatar: '',
+        token: "",
+        id: "",
+        name: "",
+        avatar: "",
         permissions: []
     },
     mutations: {

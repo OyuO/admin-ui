@@ -54,7 +54,7 @@ export default {
           }
 
           this.$store.dispatch("Login", this.loginForm).then(() => {
-            this.$router.push({path: "index"})
+            this.$router.push({path: "/"})
           }).catch(msg => {
             this.loading = false
             this.$message.error(msg)

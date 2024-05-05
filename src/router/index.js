@@ -4,7 +4,7 @@ import Layout from "@/layout"
 
 Vue.use(Router)
 
-export const constRoutes = [
+export const constantRoutes = [
     {
         path: "/redirect",
         component: Layout,
@@ -152,5 +152,5 @@ Router.prototype.replace = function (location) {
 export default new Router({
     mode: "history",
     scrollBehavior: () => ({y: 0}),
-    routes: constRoutes
+    routes: constantRoutes
 })

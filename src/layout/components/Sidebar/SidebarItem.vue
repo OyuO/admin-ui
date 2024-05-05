@@ -1,8 +1,8 @@
 <script>
 import path from 'path'
 import {isExternal} from "@/common/validate";
-import MenuItem from "@/layout/components/sidebar/MenuItem.vue";
-import AppLink from "@/layout/components/sidebar/AppLink.vue";
+import MenuItem from "./MenuItem";
+import AppLink from "./AppLink";
 
 export default {
   name: "SidebarItem",
