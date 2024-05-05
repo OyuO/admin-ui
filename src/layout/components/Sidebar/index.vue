@@ -1,13 +1,13 @@
 <script>
-import Logo from "./Logo";
-import {mapGetters, mapState} from "vuex";
-import SidebarItem from "./SidebarItem.vue";
+import Logo from "./Logo"
+import {mapGetters, mapState} from "vuex"
+import SidebarItem from "./SidebarItem.vue"
 
 export default {
   components: {SidebarItem, Logo},
   computed: {
     ...mapState(["settings"]),
-    ...mapGetters(["sidebarRouters", "Sidebar"]),
+    ...mapGetters(["sidebarRouters", "sidebar"]),
     activeMenu() {
       const route = this.$route
       const {meta, path} = route
