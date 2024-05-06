@@ -1,4 +1,4 @@
-import {http} from "@/common/request"
+import {http} from "@/utils/request"
 
 export const menuApi = {
     getRouters() {

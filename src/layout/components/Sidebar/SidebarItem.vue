@@ -1,6 +1,6 @@
 <script>
 import path from 'path'
-import {isExternal} from "@/common/validate";
+import {isExternal} from "@/utils/validate";
 import MenuItem from "./MenuItem";
 import AppLink from "./AppLink";
 

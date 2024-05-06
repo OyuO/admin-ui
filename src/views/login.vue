@@ -2,7 +2,7 @@
 import Cookies from "js-cookie";
 import loginApi from "@/api/login";
 import validcode from "@/assets/images/validcode.gif"
-import {decrypt, encrypt} from "@/common/jsencrypt";
+import {decrypt, encrypt} from "@/utils/jsencrypt";
 
 export default {
   name: "Login",

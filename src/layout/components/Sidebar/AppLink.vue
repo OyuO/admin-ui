@@ -1,5 +1,5 @@
 <script>
-import {isExternal} from "@/common/validate";
+import {isExternal} from "@/utils/validate";
 
 export default {
   name: "AppLink",
