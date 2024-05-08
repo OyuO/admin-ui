@@ -21,9 +21,9 @@ router.beforeEach((to, from, next) => {
             next()
         } else {
             if (store.getters.roles.length === 0) {
-                isRelogin = true
+                isRelogin.show = true
                 store.dispatch("GetInfo").then(() => {
-                    isRelogin = false
+                    isRelogin.show = false
                     store.dispatch("GenerateRoutes").then(accessRoutes => {
                         router.addRoute(accessRoutes)
                         next({...to, replace: true})

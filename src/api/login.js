@@ -5,7 +5,7 @@ export const loginApi = {
         return http.get("/captchaImage")
     },
     login(userInfo) {
-        return http.post("/login", userInfo)
+        return http({url: "/login", headers: {isToken: false, repeatSubmit: false}, method: "post", data: userInfo})
     },
     register(data) {
         return http({

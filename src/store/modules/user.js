@@ -35,12 +35,8 @@ const user = {
         Login({commit}, userInfo) {
             return new Promise((resolve, reject) => {
                 loginApi.login(userInfo).then(res => {
-                    const data = res.data
-                    // console.log(data)
-                    if (data.code !== 200) {
-                        reject(data.msg)
-                    }
-                    setToken(data.token)
+                    console.log(res)
+                    setToken(res.token)
                     commit("SET_TOKEN", res.token)
                     resolve()
                 }).catch(error => {
@@ -53,7 +49,8 @@ const user = {
             return new Promise((resolve, reject) => {
                 loginApi.getInfo().then(res => {
                     const user = res.user
-                    const avatar = (user.avatar == "" || user.avatar == null) ? require("@/assets/images/profile.jpg") : process.env.VUE_APP_BASE_API + user.avatar
+                    console.log(user)
+                    const avatar = (user.avatar === "" || user.avatar === null) ? require("@/assets/images/profile.jpg") : process.env.VUE_APP_BASE_API + user.avatar
                     if (res.roles && res.roles.length > 0) { // 验证返回的roles是否是一个非空数组
                         commit("SET_ROLES", res.roles)
                         commit("SET_PERMISSIONS", res.permissions)

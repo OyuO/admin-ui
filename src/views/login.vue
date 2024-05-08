@@ -1,31 +1,31 @@
 <script>
-import Cookies from "js-cookie";
-import loginApi from "@/api/login";
+import Cookies from "js-cookie"
+import {loginApi} from "@/api/login"
 import validcode from "@/assets/images/validcode.gif"
-import {decrypt, encrypt} from "@/utils/jsencrypt";
+import {decrypt, encrypt} from "@/utils/jsencrypt"
 
 export default {
   name: "Login",
   data() {
     return {
       loginForm: {
-        username: '',
-        password: '',
-        code: '',
-        uuid: '',
+        username: "",
+        password: "",
+        code: "",
+        uuid: "",
         rememberMe: false
       },
       validCodeImgUrl: validcode,
       loading: false,
       rules: {
         username: [
-          {required: true, message: '请输入您的账号', trigger: 'blur'}
+          {required: true, message: "请输入您的账号", trigger: "blur"}
         ],
         password: [
-          {required: true, message: '请输入您的密码', trigger: 'blur'}
+          {required: true, message: "请输入您的密码", trigger: "blur"}
         ],
         code: [
-          {required: true, message: '请输入验证码', trigger: 'blur'}
+          {required: true, message: "请输入验证码", trigger: "blur"}
         ]
       }
     }
@@ -33,14 +33,12 @@ export default {
   methods: {
     refreshValidCodeImg() {
       loginApi.getValidCodeImg().then(res => {
-        const data = res.data
-        console.log(data)
-        this.validCodeImgUrl = 'data:image/gif;base64,' + data.img
-        this.loginForm.uuid = data.uuid
+        this.validCodeImgUrl = "data:image/gif;base64," + res.img
+        this.loginForm.uuid = res.uuid
       })
     },
     submitLoginForm() {
-      this.$refs['loginForm'].validate(valid => {
+      this.$refs["loginForm"].validate(valid => {
         if (valid) {
           this.loading = true
           if (this.loginForm.rememberMe) {
