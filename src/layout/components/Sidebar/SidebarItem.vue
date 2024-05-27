@@ -1,12 +1,12 @@
 <script>
-import path from 'path'
-import {isExternal} from "@/utils/validate";
-import MenuItem from "./MenuItem";
-import AppLink from "./AppLink";
+import path from "path"
+import {isExternal} from "@/utils/validate"
+import Item from "./Item"
+import AppLink from "./AppLink"
 
 export default {
   name: "SidebarItem",
-  components: {MenuItem, AppLink},
+  components: {Item, AppLink},
   props: {
     item: {
       type: Object,
@@ -38,7 +38,6 @@ export default {
           return true
         }
       })
-
       if (showingChildren.length === 1) {
         return true
       }
@@ -51,6 +50,7 @@ export default {
       return false
     },
     resolvePath(routePath, routeQuery) {
+      console.log(routeQuery)
       if (isExternal(routePath)) {
         return routePath
       }
@@ -72,16 +72,16 @@ export default {
 <template>
   <div v-if="!item.hidden">
     <template
-        v-if="hasOneShowingChild(item.children,item) && (onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
-      <app-link :to="resolvePath(onlyOneChild.path,onlyOneChild.query)">
+        v-if="hasOneShowingChild(item.children,item) && (!onlyOneChild.children || onlyOneChild.noShowingChildren) && !item.alwaysShow">
+      <app-link v-if="onlyOneChild.meta" :to="resolvePath(onlyOneChild.path,onlyOneChild.query)">
         <el-menu-item :index="resolvePath(onlyOneChild.path)">
-          <menu-item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="onlyOneChild.meta.title"/>
+          <item :icon="onlyOneChild.meta.icon || (item.meta && item.meta.icon)" :title="onlyOneChild.meta.title"/>
         </el-menu-item>
       </app-link>
     </template>
     <el-submenu v-else ref="subMenu" :index="resolvePath(item.path)" popper-append-to-body>
       <template slot="title">
-        <menu-item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title"/>
+        <item v-if="item.meta" :icon="item.meta && item.meta.icon" :title="item.meta.title"/>
       </template>
       <sidebar-item v-for="(child,index) in item.children" :key="child.path + index" :is-nest="true" :item="child"
                     :base-path="resolvePath((child.path))" class="nest-menu"/>
@@ -89,6 +89,6 @@ export default {
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 
 </style>

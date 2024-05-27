@@ -110,7 +110,7 @@ export default {
   </div>
 </template>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .login_container {
   background-color: #2b4b6b;
   height: 100%;

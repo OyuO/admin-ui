@@ -6,6 +6,6 @@
   <h1>index</h1>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 
 </style>

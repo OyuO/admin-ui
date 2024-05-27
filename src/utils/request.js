@@ -10,7 +10,7 @@ import {saveAs} from "file-saver"
 let downloadLoadingInstance
 export let isRelogin = {show: false}
 
-export const http = axios.create({
+const service = axios.create({
     baseURL: "/prod-api", // 在这里设置基础 URL
     timeout: 10000, // 设置超时时间（可选）
     headers: {
@@ -18,7 +18,7 @@ export const http = axios.create({
     }
 })
 
-http.interceptors.request.use(config => {
+service.interceptors.request.use(config => {
     const isToken = (config.headers || {}).isToken === false
     const isRepeatSubmit = (config.headers || {}).repeatSubmit === false
     if (getToken() && !isToken) {
@@ -66,7 +66,7 @@ http.interceptors.request.use(config => {
     Promise.reject(error)
 })
 
-http.interceptors.response.use(res => {
+service.interceptors.response.use(res => {
         // 未设置状态码则默认成功状态
         const code = res.data.code || 200
         // 获取错误信息
@@ -127,7 +127,7 @@ export function download(url, params, filename, config) {
         spinner: "el-icon-loading",
         background: "rgba(0, 0, 0, 0.7)"
     })
-    return http.post(url, params, {
+    return service.post(url, params, {
         transformRequest: [(params) => {
             return transParams(params)
         }],
@@ -152,3 +152,5 @@ export function download(url, params, filename, config) {
         downloadLoadingInstance.close()
     })
 }
+
+export default service

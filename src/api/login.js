@@ -1,14 +1,14 @@
-import {http as http} from "@/utils/request"
+import request from "@/utils/request"
 
 export const loginApi = {
     getValidCodeImg() {
-        return http.get("/captchaImage")
+        return request.get("/captchaImage")
     },
     login(userInfo) {
-        return http({url: "/login", headers: {isToken: false, repeatSubmit: false}, method: "post", data: userInfo})
+        return request({url: "/login", headers: {isToken: false, repeatSubmit: false}, method: "post", data: userInfo})
     },
     register(data) {
-        return http({
+        return request({
             url: "/register",
             headers: {
                 isToken: false
@@ -18,13 +18,13 @@ export const loginApi = {
         })
     },
     getInfo() {
-        return http({
+        return request({
             url: "/getInfo",
             method: "get"
         })
     },
     logout() {
-        return http({
+        return request({
             url: "/logout",
             method: "post"
         })

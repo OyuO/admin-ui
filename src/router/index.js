@@ -1,5 +1,5 @@
-import Vue from "vue";
-import Router from "vue-router";
+import Vue from "vue"
+import Router from "vue-router"
 import Layout from "@/layout"
 
 Vue.use(Router)
@@ -43,7 +43,7 @@ export const constantRoutes = [
         children: [
             {
                 path: "index",
-                component: () => import("@/views/index.vue"),
+                component: () => import("@/views/index"),
                 name: "Index",
                 meta: {title: "首页", icon: "dashboard", affix: true}
             }
@@ -138,16 +138,16 @@ export const dynamicRoutes = [
 ]
 
 
-let routerPush = Router.prototype.push;
+let routerPush = Router.prototype.push
 let routerReplace = Router.prototype.replace
 
 Router.prototype.push = function (location) {
     return routerPush.call(this, location).catch(err => err)
-};
+}
 
 Router.prototype.replace = function (location) {
     return routerReplace.call(this, location).catch(err => err)
-};
+}
 
 export default new Router({
     mode: "history",

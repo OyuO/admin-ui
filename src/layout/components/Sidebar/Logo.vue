@@ -27,7 +27,7 @@ export default {
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 .logo-title-link {
   display: inline-flex;
   align-items: center

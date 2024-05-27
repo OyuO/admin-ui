@@ -1,6 +1,6 @@
 import auth from "@/plugins/auth"
 import router, {constantRoutes, dynamicRoutes} from "@/router"
-import {menuApi} from "@/api/menu"
+import {getRouters} from "@/api/menu"
 import Layout from "@/layout/index"
 import ParentView from "@/components/ParentView"
 import InnerLink from "@/layout/components/InnerLink"
@@ -33,7 +33,7 @@ const permission = {
         GenerateRoutes({commit}) {
             return new Promise(resolve => {
                 // 向后端请求路由数据
-                menuApi.getRouters().then(res => {
+                getRouters().then(res => {
                     const sdata = JSON.parse(JSON.stringify(res.data))
                     const rdata = JSON.parse(JSON.stringify(res.data))
                     const sidebarRoutes = filterAsyncRouter(sdata)

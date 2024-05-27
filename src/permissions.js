@@ -25,7 +25,7 @@ router.beforeEach((to, from, next) => {
                 store.dispatch("GetInfo").then(() => {
                     isRelogin.show = false
                     store.dispatch("GenerateRoutes").then(accessRoutes => {
-                        router.addRoute(accessRoutes)
+                        router.addRoutes(accessRoutes)
                         next({...to, replace: true})
                     })
                 }).catch(err => {

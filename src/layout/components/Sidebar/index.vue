@@ -22,6 +22,10 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
+  },
+  created() {
+    console.log(this.sidebarRouters)
+    console.log("sidebarRouters")
   }
 }
 </script>
@@ -40,6 +44,6 @@ export default {
   </div>
 </template>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 
 </style>
