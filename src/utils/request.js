@@ -11,7 +11,7 @@ let downloadLoadingInstance
 export let isRelogin = {show: false}
 
 const service = axios.create({
-    baseURL: "/prod-api", // 在这里设置基础 URL
+    baseURL: process.env.VUE_APP_BASE_API, // 在这里设置基础 URL
     timeout: 10000, // 设置超时时间（可选）
     headers: {
         "Content-Type": "application/json;charset=utf-8" // 设置默认请求头（可选）

@@ -50,7 +50,6 @@ export default {
       return false
     },
     resolvePath(routePath, routeQuery) {
-      console.log(routeQuery)
       if (isExternal(routePath)) {
         return routePath
       }
@@ -62,6 +61,10 @@ export default {
       if (routeQuery) {
         let query = JSON.parse(routeQuery)
         return {path: path.resolve(this.basePath, routePath), query: query}
+      }
+      if (routePath === "index") {
+        console.log("Hello world!")
+        console.log(path.resolve(this.basePath, routePath))
       }
       return path.resolve(this.basePath, routePath)
     }
