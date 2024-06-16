@@ -4,8 +4,9 @@ import router from "@/router"
 import store from "@/store"
 import ElementUI from "element-ui"
 import request from "@/utils/request"
-import "element-ui/lib/theme-chalk/index.css"
-import "./assets/styles/globall.css"
+// import "element-ui/lib/theme-chalk/index.css"
+import "@/assets/styles/index.scss"
+import "./assets/styles/global.css"
 import "./permissions"
 
 Vue.use(ElementUI)
