@@ -8,6 +8,7 @@ import "element-ui/lib/theme-chalk/index.css"
 import "@/assets/styles/index.scss"
 import "./assets/styles/global.css"
 import "./permissions"
+import './assets/icons'
 
 Vue.use(ElementUI)
 Vue.prototype.$http = request

@@ -42,7 +42,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.sidebar-container {
+.sidebar-logo-container {
   position: relative;
   width: 100%;
   height: 50px;

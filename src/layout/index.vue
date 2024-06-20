@@ -28,6 +28,11 @@ export default {
     variables() {
       return variables
     }
+  },
+  methods: {
+    handleClickOutside() {
+      this.$store.dispatch("app/closeSideBar", {withoutAnimation: false})
+    }
   }
 
 }
@@ -35,30 +40,31 @@ export default {
 
 <template>
   <div :class="classObj" class="app-wrapper" :style="{'--current-color':theme}">
-    <sidebar class="sidebar-container"></sidebar>
-    <div class="right-panel"><h1>主面板</h1></div>
+    <div v-if="device==='mobile'&&sidebar.opened" class="drawer-bg" @click="handleClickOutside"/>
+    <sidebar v-if="!sidebar.hide" class="sidebar-container"></sidebar>
+    <div :class="{hasTagView:needTagsView,sidebarHide:sidebar.hide}" class="main-container">
+      <div :class="{'fixed-header':fixedHeader}">
+
+      </div>
+      <div class="header">首页</div>
+      <div class="right-panel"><h1>主面板</h1></div>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import "~@/assets/styles/mixin.scss";
 @import "~@/assets/styles/variables.scss";
-//.layout-container {
-//  height: 100%;
-//  width: 100%;
-//  display: flex
-//}
-//
-//.sidebar {
-//  height: 100%;
-//  width: 10%;
-//  background: #304156;
-//}
-//
-//.right-panel {
-//  width: 90%;
-//  height: 100%;
-//}
+
+.navbar {
+  height: 50px;
+  background-color: red;
+}
+
+.header {
+  background-color: green;
+}
+
 .app-wrapper {
   @include clearfix;
   position: relative;

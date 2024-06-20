@@ -35,8 +35,7 @@ export default {
 </script>
 
 <template>
-  <div :class="{'has-logo':showLogo}"
-       :style="{backgroundColor:settings.sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackgroound}">
+  <div :class="{'has-logo':showLogo}" :style="{backgroundColor:settings.sideTheme === 'theme-dark' ? variables.menuBackground : variables.menuLightBackgroound}">
     <logo v-if="showLogo" :collapse="isCollapse"/>
     <el-scrollbar :class="settings.sideTheme" wrap-class="scrollbar-wrapper">
       <el-menu :default-active="activeMenu" :collapse="isCollapse"
@@ -47,7 +46,6 @@ export default {
         <sidebar-item v-for="(route,index) in sidebarRouters" :key="route.path + index" :item="route"
                       :base-path="route.path"></sidebar-item>
       </el-menu>
-
     </el-scrollbar>
   </div>
 </template>
