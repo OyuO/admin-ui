@@ -3,10 +3,11 @@ import Sidebar from "./components/Sidebar"
 import {mapState} from "vuex"
 import variables from "@/assets/styles/variables.scss"
 import ResizeMixin from "./mixin/ResizeHandler"
+import NavBar from "@/layout/components/NavBar.vue"
 
 export default {
   name: "Layout",
-  components: {Sidebar},
+  components: {NavBar, Sidebar},
   mixins: [ResizeMixin],
   computed: {
     ...mapState({
@@ -44,7 +45,7 @@ export default {
     <sidebar v-if="!sidebar.hide" class="sidebar-container"></sidebar>
     <div :class="{hasTagView:needTagsView,sidebarHide:sidebar.hide}" class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
-
+        <nav-bar/>
       </div>
       <div class="header">首页</div>
       <div class="right-panel"><h1>主面板</h1></div>
@@ -58,7 +59,6 @@ export default {
 
 .navbar {
   height: 50px;
-  background-color: red;
 }
 
 .header {
