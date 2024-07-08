@@ -54,7 +54,7 @@ export default {
 <template>
   <div class="navbar">
     <hamburger id="hamburger-container" :is-active="sidebar.opened"></hamburger>
-    <breadcrumb></breadcrumb>
+    <breadcrumb id="breadcrumb-container" class="breadcrumb-container"></breadcrumb>
   </div>
 </template>
 
@@ -62,12 +62,21 @@ export default {
 .navbar {
   display: flex;
   align-items: center;
-}
 
-#hamburger-container {
-  width: 20px;
-  //height: 50px;
-  background-color: red;
-}
+  #hamburger-container {
+    line-height: 46px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    float: left;
 
+    &:hover {
+      background: rgba(0, 0, 0, .025)
+    }
+  }
+
+  .breadcrumb-container {
+    float: left;
+  }
+}
 </style>
