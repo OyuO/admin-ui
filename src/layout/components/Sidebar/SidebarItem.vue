@@ -35,7 +35,6 @@ export default {
           return false
         } else {
           this.onlyOneChild = item
-          console.log(item.meta)
           return true
         }
       })
@@ -51,6 +50,7 @@ export default {
       return false
     },
     resolvePath(routePath, routeQuery) {
+      // console.log("routePath",routePath,routeQuery)
       if (isExternal(routePath)) {
         return routePath
       }

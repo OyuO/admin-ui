@@ -46,9 +46,11 @@ export default {
     <div :class="{hasTagView:needTagsView,sidebarHide:sidebar.hide}" class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <nav-bar/>
+        <div class="tags-view-container"></div>
       </div>
-      <div class="header">首页</div>
-      <div class="right-panel"><h1>主面板</h1></div>
+      <div class="right-panel">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -61,10 +63,6 @@ export default {
   height: 50px;
 }
 
-.header {
-  background-color: green;
-}
-
 .app-wrapper {
   @include clearfix;
   position: relative;
@@ -75,6 +73,12 @@ export default {
     position: fixed;
     top: 0;
   }
+}
+
+.tags-view-container {
+  height: 30px;
+  width: 1860px;
+  background-color: slategray;
 }
 
 </style>

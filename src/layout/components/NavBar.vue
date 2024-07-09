@@ -69,6 +69,7 @@ export default {
     height: 50px;
     cursor: pointer;
     float: left;
+    text-align: center;
 
     &:hover {
       background: rgba(0, 0, 0, .025)

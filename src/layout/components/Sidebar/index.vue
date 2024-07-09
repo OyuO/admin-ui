@@ -26,10 +26,6 @@ export default {
     isCollapse() {
       return !this.sidebar.opened
     }
-  },
-  created() {
-    console.log(this.sidebarRouters)
-    console.log("sidebarRouters")
   }
 }
 </script>
