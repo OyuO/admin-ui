@@ -9,11 +9,14 @@ import "@/assets/styles/index.scss"
 import "@/assets/styles/ruoyi.scss"
 import "./permissions"
 import "./assets/icons"
+import {addDateRange} from "@/utils/ruoyi"
 
 Vue.use(ElementUI)
 Vue.prototype.$http = request
 
 Vue.config.productionTip = false
+Vue.prototype.addDateRange = addDateRange
+
 
 new Vue({
     render: h => h(App),

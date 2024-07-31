@@ -66,7 +66,7 @@ export default {
       const password = Cookies.get("password")
       const rememberMe = Cookies.get("rememberMe")
       this.loginForm = {
-        username: username === undefined ? this.loginForm.username : username,
+        name: username === undefined ? this.loginForm.username : username,
         password: password === undefined ? this.loginForm.password : decrypt(password),
         rememberMe: rememberMe === undefined ? this.loginForm.rememberMe : Boolean(rememberMe)
       }
