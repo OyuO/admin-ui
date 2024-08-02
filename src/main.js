@@ -9,13 +9,18 @@ import "@/assets/styles/index.scss"
 import "@/assets/styles/ruoyi.scss"
 import "./permissions"
 import "./assets/icons"
+import plugins from "./plugins"
 import {addDateRange} from "@/utils/ruoyi"
+import Cookies from "js-cookie"
 
-Vue.use(ElementUI)
 Vue.prototype.$http = request
 
 Vue.config.productionTip = false
 Vue.prototype.addDateRange = addDateRange
+Vue.use(plugins)
+Vue.use(ElementUI, {
+    size: Cookies.get("size") || "medium" // set element-ui default size
+})
 
 
 new Vue({
