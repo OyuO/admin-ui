@@ -46,7 +46,8 @@ export default {
     <div :class="{hasTagView:needTagsView,sidebarHide:sidebar.hide}" class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <nav-bar/>
-        <div class="tags-view-container"></div>
+        <div class="tags-view-container">
+        </div>
       </div>
       <div class="right-panel">
         <router-view></router-view>
@@ -77,8 +78,7 @@ export default {
 
 .tags-view-container {
   height: 30px;
-  width: 1860px;
-  background-color: slategray;
+  background: #517e9a;
 }
 
 </style>

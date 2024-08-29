@@ -1,13 +1,15 @@
 <script>
 import Hamburger from "@/components/Hamburger"
 import Breadcrumb from "@/layout/components/Breadcrumb/index.vue"
+import Search from "@/components/HeaderSearch"
 import {mapGetters} from "vuex"
 
 export default {
   name: "NavBar",
   components: {
     Hamburger,
-    Breadcrumb
+    Breadcrumb,
+    Search
   },
   computed: {
     ...mapGetters([
@@ -55,6 +57,32 @@ export default {
   <div class="navbar">
     <hamburger id="hamburger-container" :is-active="sidebar.opened"></hamburger>
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container"></breadcrumb>
+    <div class="right-menu">
+      <search class="svg-container"/>
+      <div class="svg-container">
+        <svg data-v-248913c8="" aria-hidden="true" class="svg-icon">
+          <use data-v-248913c8="" xlink:href="#icon-github"></use>
+        </svg>
+      </div>
+      <div class="svg-container">
+        <svg data-v-248913c8="" aria-hidden="true" class="svg-icon">
+          <use data-v-248913c8="" xlink:href="#icon-question"></use>
+        </svg>
+      </div>
+      <div class="svg-container">
+        <svg data-v-248913c8="" data-v-243c7c0f="" aria-hidden="true" class="svg-icon">
+          <use data-v-248913c8="" xlink:href="#icon-fullscreen"></use>
+        </svg>
+      </div>
+      <div class="svg-container">
+        <svg data-v-248913c8="" aria-hidden="true" class="svg-icon size-icon">
+          <use data-v-248913c8="" xlink:href="#icon-size"></use>
+        </svg>
+      </div>
+      <div class="svg-container">
+        <img src="@/assets/images/profile.jpg" style="width: 40px;height: 40px;"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,6 +90,7 @@ export default {
 .navbar {
   display: flex;
   align-items: center;
+  position: relative;
 
   #hamburger-container {
     line-height: 46px;
@@ -78,6 +107,23 @@ export default {
 
   .breadcrumb-container {
     float: left;
+  }
+
+  .right-menu {
+    position: absolute;
+    right: 2rem;
+    display: flex;
+
+    .svg-container {
+      padding: 0 0.5rem;
+      display: flex;
+      align-items: center;
+
+      .svg-icon {
+        width: 1.125rem;
+        height: 1.125rem;
+      }
+    }
   }
 }
 </style>
