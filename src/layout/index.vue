@@ -60,10 +60,6 @@ export default {
 @import "~@/assets/styles/mixin.scss";
 @import "~@/assets/styles/variables.scss";
 
-.navbar {
-  height: 50px;
-}
-
 .app-wrapper {
   @include clearfix;
   position: relative;
@@ -76,9 +72,35 @@ export default {
   }
 }
 
-.tags-view-container {
-  height: 30px;
-  background: #517e9a;
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$base-sidebar-width});
+  transition: width 0.28s;
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - 54px);
+}
+
+.sidebarHide .fixed-header {
+  width: 100%;
+}
+
+.mobile .fixed-header {
+  width: 100%;
 }
 
 </style>

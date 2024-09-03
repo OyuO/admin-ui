@@ -55,7 +55,8 @@ export default {
 
 <template>
   <div class="navbar">
-    <hamburger id="hamburger-container" :is-active="sidebar.opened"></hamburger>
+    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container"
+               @toggleClick="toggleSidebar"></hamburger>
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
       <search class="svg-container"/>
