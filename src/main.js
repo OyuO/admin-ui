@@ -7,6 +7,7 @@ import request from "@/utils/request"
 import "element-ui/lib/theme-chalk/index.css"
 import "@/assets/styles/index.scss"
 import "@/assets/styles/ruoyi.scss"
+import './assets/styles/element-variables.scss'
 import "./permissions"
 import "./assets/icons"
 import plugins from "./plugins"
