@@ -3,10 +3,14 @@ import Hamburger from "@/components/Hamburger"
 import Breadcrumb from "@/layout/components/Breadcrumb/index.vue"
 import Search from "@/components/HeaderSearch"
 import {mapGetters} from "vuex"
+import RuoYiGit from "@/components/RuoYi/Git/index.vue"
+import Screenfull from "@/components/Screenfull/index.vue"
 
 export default {
   name: "NavBar",
   components: {
+    Screenfull,
+    RuoYiGit,
     Hamburger,
     Breadcrumb,
     Search
@@ -60,20 +64,16 @@ export default {
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container"></breadcrumb>
     <div class="right-menu">
       <search class="svg-container"/>
-      <div class="svg-container">
-        <svg data-v-248913c8="" aria-hidden="true" class="svg-icon">
-          <use data-v-248913c8="" xlink:href="#icon-github"></use>
-        </svg>
-      </div>
+      <el-tooltip class="item" effect="dark" content="源码地址" placement="bottom">
+        <ruo-yi-git class="svg-container"></ruo-yi-git>
+      </el-tooltip>
       <div class="svg-container">
         <svg data-v-248913c8="" aria-hidden="true" class="svg-icon">
           <use data-v-248913c8="" xlink:href="#icon-question"></use>
         </svg>
       </div>
       <div class="svg-container">
-        <svg data-v-248913c8="" data-v-243c7c0f="" aria-hidden="true" class="svg-icon">
-          <use data-v-248913c8="" xlink:href="#icon-fullscreen"></use>
-        </svg>
+        <screenfull></screenfull>
       </div>
       <div class="svg-container">
         <svg data-v-248913c8="" aria-hidden="true" class="svg-icon size-icon">
@@ -119,6 +119,7 @@ export default {
       padding: 0 0.5rem;
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       .svg-icon {
         width: 1.125rem;
