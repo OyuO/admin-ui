@@ -4,10 +4,11 @@ import {mapState} from "vuex"
 import variables from "@/assets/styles/variables.scss"
 import ResizeMixin from "./mixin/ResizeHandler"
 import NavBar from "@/layout/components/NavBar.vue"
+import TagsView from "@/layout/components/TagsView/index.vue"
 
 export default {
   name: "Layout",
-  components: {NavBar, Sidebar},
+  components: {TagsView, NavBar, Sidebar},
   mixins: [ResizeMixin],
   computed: {
     ...mapState({
@@ -47,6 +48,7 @@ export default {
       <div :class="{'fixed-header':fixedHeader}">
         <nav-bar/>
         <div class="tags-view-container">
+          <tags-view/>
         </div>
       </div>
       <div class="right-panel">
@@ -89,6 +91,12 @@ export default {
   z-index: 9;
   width: calc(100% - #{$base-sidebar-width});
   transition: width 0.28s;
+}
+
+
+.tags-view-container {
+  border-bottom: 1px solid #d8dce5;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12), 0 0 3px 0 rgba(0, 0, 0, .04);
 }
 
 .hideSidebar .fixed-header {

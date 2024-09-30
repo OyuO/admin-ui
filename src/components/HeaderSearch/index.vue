@@ -25,16 +25,11 @@ export default {
     }
   },
   mounted() {
-    this.list = this.states.map(item => {
-      return {value: `value:${item}`, label: `label:${item}`}
-    })
   },
   methods: {
     querySearch(query) {
-      console.log(query)
     },
     change() {
-      console.log("change")
     },
     click() {
       this.show = !this.show
