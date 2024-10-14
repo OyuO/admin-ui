@@ -69,7 +69,7 @@ export default {
       this.open = true
     },
     // 勾选
-    checkboxChange() {
+    checkboxChange(event, label) {
       this.columns.filter(item => item.label === label)[0].visible = event
     }
   }
@@ -87,7 +87,7 @@ export default {
         <el-button size="mini" circle icon="el-icon-refresh" @click="refresh"/>
       </el-tooltip>
       <el-tooltip class="item" effect="dark" content="显隐列" placement="top" v-if="columns">
-<!--        <el-button size="mini" circle icon="el-icon-menu" @click="showColumn" v-if="showColumnsType === 'transfer'"/>-->
+        <!--        <el-button size="mini" circle icon="el-icon-menu" @click="showColumn" v-if="showColumnsType === 'transfer'"/>-->
         <el-dropdown trigger="click" :hide-on-click="false" style="padding-left: 12px">
           <el-button size="mini" circle icon="el-icon-menu"/>
           <el-dropdown-menu slot="dropdown">

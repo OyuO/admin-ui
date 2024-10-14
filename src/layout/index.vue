@@ -5,10 +5,11 @@ import variables from "@/assets/styles/variables.scss"
 import ResizeMixin from "./mixin/ResizeHandler"
 import NavBar from "@/layout/components/NavBar.vue"
 import TagsView from "@/layout/components/TagsView/index.vue"
+import AppMain from "@/layout/components/AppMain.vue"
 
 export default {
   name: "Layout",
-  components: {TagsView, NavBar, Sidebar},
+  components: {AppMain, TagsView, NavBar, Sidebar},
   mixins: [ResizeMixin],
   computed: {
     ...mapState({
@@ -51,9 +52,10 @@ export default {
           <tags-view/>
         </div>
       </div>
-      <div class="right-panel">
-        <router-view></router-view>
-      </div>
+      <AppMain/>
+      <!--      <div class="right-panel">-->
+      <!--        <router-view></router-view>-->
+      <!--      </div>-->
     </div>
   </div>
 </template>

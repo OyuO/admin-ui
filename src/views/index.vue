@@ -65,7 +65,7 @@ export default {
                        @click="goTarget('https://gitee.com/y_project/RuoYi-Vue')">访问码云
             </el-button>
             <el-button size="mini" icon="el-icon-s-home" plain
-                       @click="goTarget('http://ruoyi.vip')">访问主页
+                       @click="goTarget('https://ruoyi.vip')">访问主页
             </el-button>
           </p>
         </div>
